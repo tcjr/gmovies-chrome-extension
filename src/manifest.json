@@ -1,0 +1,14 @@
+{
+  "name": "Google Movies with Rotten Tomatoes",
+  "version": "1.0",
+  "description": "Adds Rotten Tomatoes' freshness ratings to Google movie listings.",
+  "content_scripts": [
+    {
+      "matches": ["http://google.com/movies"],
+      "js": ["dojo.js", "gmovies-extension.js"]
+    }
+  ],
+  "permissions": [
+    "http://i.rottentomatoes.com/"
+  ]
+}

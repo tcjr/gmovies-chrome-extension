@@ -1,0 +1,5 @@
+dist
+tempbuild
+*.pem
+.DS_Store
+src/js/dojo-release*
