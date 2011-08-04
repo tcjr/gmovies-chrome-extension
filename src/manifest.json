@@ -1,3 +1,9 @@
+/*
+ * This source references in this file are based on the built version of 
+ * the app.  
+ *
+ * TODO: Create a version that will work with dojo's on-demand loader.
+ */
 {
   "name": "Google Movies with Rotten Tomatoes",
   "version": "1.0",
