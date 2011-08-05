@@ -7,7 +7,7 @@ dojo.declare('ext.gmrt.Loader', null, {
   },
 
   loadMovies: function(rtUrl) {
-    console.debug("LOADING... this=%o", this);
+    //console.debug("LOADING... this=%o", this);
 
     var loadDef = dojo.xhrGet({
       url: rtUrl,
@@ -22,6 +22,7 @@ dojo.declare('ext.gmrt.Loader', null, {
 
   _addMovies: function(xmlDoc) {
     var itemNodes = xmlDoc.getElementsByTagName('item');
+    //console.debug("ITEM NODES: %o", itemNodes);
 
     dojo.forEach(itemNodes, function(itemNode) {
       var title = itemNode.getElementsByTagName('title')[0].textContent.replace(/^\s*/,'');
@@ -35,14 +36,16 @@ dojo.declare('ext.gmrt.Loader', null, {
   		//var link = itemNode.getXlements.getElementsByTagName('link')[0].textContent,
   		//var description = itemNode.getXlements.getElementsByTagName('description')[0].textContent
   		var rt = itemNode.getElementsByTagNameNS('*', 'tomatometer_percent')[0].textContent;
+  		var link = itemNode.getElementsByTagName('link')[0].textContent;
 
   		//console.debug("MOVIE: %s", title);
       var movie = {
         title: title,
-        rating: rt
+        rating: rt,
+        link: link
       };
   		
-  		//console.debug("..adding movie: %o; this.allMovies=%o", title, this.allMovies);
+  		//console.debug("..adding movie: %o", movie);
   		this.allMovies[title] = movie;
     }, this);
 
@@ -51,12 +54,15 @@ dojo.declare('ext.gmrt.Loader', null, {
   },
   
   getMovieInfo: function(title) {
-    console.debug("looking up %s", title);
+    //console.debug("looking up %s", title);
     var movie = this.allMovies[this.keyFor(title)];
-    console.debug("resp: %o", movie);
+    //console.debug("resp: %o", movie);
     if (movie == undefined) {
       // todo: use factory?
-      movie = {rating: ''};
+      movie = {
+        rating: '',
+        link: ''
+      };
     }
     return movie;
   },

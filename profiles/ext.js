@@ -16,7 +16,6 @@ dependencies = {
   ],
 
   prefixes: [
-    //[ "dijit", "../dijit" ],
     //[ "dojox", "../dojox" ],
     [ "ext", "../../ext" ]
   ]
